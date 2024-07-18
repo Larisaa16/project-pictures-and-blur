@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Muli', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    background: #111; /* Setarea unei culori de fundal pentru corp */
+}
+
+.container {
+    display: flex;
+    width: 90vw;
+    max-width: 1200px; /* Limitarea la o lățime maximă de 1200px */
+    margin: auto; /* Centrarea containerului pe ecran */
+}
+
+.panel {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80vh;
+    border-radius: 50px;
+    color: #fff;
+    cursor: pointer;
+    flex: 0.5;
+    margin: 10px;
+    position: relative;
+    transition: flex 0.7s ease-in;
+    overflow: hidden; /* Adăugarea pentru a preveni scroll-ul orizontal */
+}
+
+.panel h3 {
+    font-size: 24px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    margin: 0;
+    opacity: 0;
+    transition: opacity 0.7s ease-in 0.4s;
+}
+
+.panel.active {
+    flex: 5;
+}
+
+.panel.active h3 {
+    opacity: 1;
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 100vw;
+        flex-wrap: wrap; /* Afișarea pe mai multe rânduri pe dispozitive mici */
+    }
+
+    .panel {
+        flex: 1 1 100%; /* Ocupare completă pe ecran mic */
+        margin-bottom: 20px;
+    }
+
+    .panel:nth-of-type(n+4) {
+        display: none; /* Ascunderea de la al patrulea element în jos pe ecrane mici */
+    }
+}
+
+.background-blur {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    filter: blur(20px);
+    z-index: -1; /* Plasarea sub panourile de imagini */
+    transition: background-image 0.5s ease-in-out;
+}
